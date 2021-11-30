@@ -80,9 +80,6 @@ public class Person {
         }
         if(this.pnArray.contains(pn)){
             this.pnArray.remove(pn);
-            if(this.pnArray.size() <= 1){
-                throw new IllegalArgumentException();
-            }
             return true;
         }
         else{
