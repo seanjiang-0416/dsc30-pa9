@@ -75,11 +75,14 @@ public class Person {
     }
 
     public boolean deletePhoneNumber(String pn){
-        if(this.pnArray.size() <= 2){
+        if(this.pnArray.size() <= 1){
             throw new IllegalArgumentException();
         }
         if(this.pnArray.contains(pn)){
-            pnArray.remove(pn);
+            this.pnArray.remove(pn);
+            if(this.pnArray.size() <= 1){
+                throw new IllegalArgumentException();
+            }
             return true;
         }
         else{
@@ -87,17 +90,6 @@ public class Person {
         }
     }
 
-    public static void main(String[] args) {
 
-        ContactList testList = new ContactList();
-        ArrayList<String> sean_Num = new ArrayList<String>();
-        sean_Num.add("123");
-        sean_Num.add("1223");
-        sean_Num.add("12344");
-        Person Sean = new Person("Sean", sean_Num);
-        //System.out.println(testList.createContact(Sean));
-        System.out.println(Sean.deletePhoneNumber("12"));
-
-    }
 }
 
