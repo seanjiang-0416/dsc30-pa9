@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Person {
 
@@ -29,9 +30,11 @@ public class Person {
     }
 
     public ArrayList<String> getPhoneNumbers(){
-        MergeSort(this.pnArray,0,pnArray.size()-1);
+        //MergeSort(this.pnArray,0,pnArray.size()-1);
+        Collections.sort(this.pnArray);
         return this.pnArray;
     }
+/*
     private void MergeSort(ArrayList<String> list, int start, int end) {
 
         if (start < end)
@@ -73,6 +76,8 @@ public class Person {
             arr.set(l + i, mergedNums.get(i));
         }
     }
+
+ */
 
     public boolean deletePhoneNumber(String pn){
         if(this.pnArray.contains(pn)){

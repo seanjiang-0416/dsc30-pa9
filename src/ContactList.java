@@ -60,7 +60,8 @@ public class ContactList {
 
         ArrayList<String> names =
                 new ArrayList<String>(this.contactList.keySet());
-        MergeSort(names,0,this.contactList.size()-1);
+        //MergeSort(names,0,this.contactList.size()-1);
+        Collections.sort(names);
         String [] output = new String[names.size()];
         return names.toArray(output);
     }
@@ -73,11 +74,13 @@ public class ContactList {
             phoneNumbers.addAll(this.contactList.get(name).getPhoneNumbers());
         }
         ArrayList<String> pbList = new ArrayList<String>(phoneNumbers);
-        MergeSort(pbList,0,pbList.size()-1);
+        //MergeSort(pbList,0,pbList.size()-1);
+        Collections.sort(pbList);
         String[] output = new String[pbList.size()];
         pbList.toArray(output);
         return output;
     }
+    /*
     private void MergeSort(ArrayList<String> list, int start, int end) {
 
         if (start < end)
@@ -118,6 +121,10 @@ public class ContactList {
         for (int i = 0; i < mergedSize; i++) {
             arr.set(l + i, mergedNums.get(i));
         }
+
+
     }
+
+     */
 
 }
