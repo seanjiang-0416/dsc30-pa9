@@ -20,7 +20,12 @@ public class ContactList {
     }
 
     public boolean lookupContact(String name){
-        return contactList.containsKey(name);
+        if(contactList.containsKey(name)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public Person getContact(String name){
