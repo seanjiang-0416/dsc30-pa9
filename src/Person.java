@@ -73,7 +73,7 @@ public class Person {
     }
 
     public boolean deletePhoneNumber(String pn){
-        if(this.pnArray.size() < 1){
+        if(this.pnArray.size() <= 1){
             throw new IllegalArgumentException();
         }
         return this.pnArray.remove(pn);
