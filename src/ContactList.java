@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class ContactLists {
+public class ContactList {
 
     Hashtable<String,Person> contactList = new Hashtable<>();
     private static final int MIDDLE_IDX = 2;
