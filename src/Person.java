@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.ArrayList;
 
 public class Person {
@@ -73,7 +75,7 @@ public class Person {
     }
 
     public boolean deletePhoneNumber(String pn){
-        if(this.pnArray.size() <= 1){
+        if(this.pnArray.size() <= 2){
             throw new IllegalArgumentException();
         }
         if(this.pnArray.contains(pn)){
@@ -83,6 +85,19 @@ public class Person {
         else{
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+
+        ContactList testList = new ContactList();
+        ArrayList<String> sean_Num = new ArrayList<String>();
+        sean_Num.add("123");
+        sean_Num.add("1223");
+        sean_Num.add("12344");
+        Person Sean = new Person("Sean", sean_Num);
+        //System.out.println(testList.createContact(Sean));
+        System.out.println(Sean.deletePhoneNumber("12"));
+
     }
 }
 
