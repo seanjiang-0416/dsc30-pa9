@@ -75,10 +75,10 @@ public class Person {
     }
 
     public boolean deletePhoneNumber(String pn){
-        if(this.pnArray.size() <= 1){
-            throw new IllegalArgumentException();
-        }
         if(this.pnArray.contains(pn)){
+            if(this.pnArray.size() <= 1){
+                throw new IllegalArgumentException();
+            }
             this.pnArray.remove(pn);
             return true;
         }
