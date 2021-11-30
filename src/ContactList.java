@@ -3,8 +3,12 @@ import java.util.*;
 
 public class ContactList {
 
-    Hashtable<String,Person> contactList = new Hashtable<>();
+    Hashtable<String,Person> contactList;
     private static final int MIDDLE_IDX = 2;
+
+    public ContactList(){
+        contactList = new Hashtable<>();
+    }
 
     public boolean createContact(Person person){
         if(contactList.containsKey(person.getName())){

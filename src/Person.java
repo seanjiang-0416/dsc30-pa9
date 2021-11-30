@@ -5,8 +5,10 @@ public class Person {
     String name;
     ArrayList<String> pnArray;
     private static final int MIDDLE_IDX = 2;
+
     public Person(String name, ArrayList<String> pnArray){
         this.name = name;
+        this.pnArray = new ArrayList<>();
         this.pnArray.addAll(pnArray);
     }
 
