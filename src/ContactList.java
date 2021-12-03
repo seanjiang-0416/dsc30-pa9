@@ -75,67 +75,64 @@ public class ContactList {
         }
         ArrayList<String> pbList = new ArrayList<String>(phoneNumbers);
         //MergeSort(pbList,0,pbList.size()-1);
-        MergeSort(pbList,0,pbList.size()-1);
+        QuickSort(pbList,0,pbList.size()-1);
         String[] output = new String[pbList.size()];
         pbList.toArray(output);
         return output;
     }
-
     /**
-     * This method performs merge sort on the input arraylist
+     * This method performs quick sort on the input arraylist
      *
      * @param list The arraylist we want to sort
-     * @param start The inital index on subsection of Arraylist we want to sort
-     * @param end The final index of the subsection of Arraylist we want to sort
+     * @param start The inital index on subsection of Arraylist
+     *              we want to sort
+     * @param end The final index of the subsection of Arraylist we
+     *            want to sort
      */
-    public void MergeSort(ArrayList<String> list, int start, int end) {
-
-        if (start < end)
-        {
-            int mid = start + (end - start) / MIDDLE_IDX;
-            MergeSort(list, start, mid);
-            MergeSort(list , mid + 1, end);
-
-            merge(list, start, mid, end);
+    public void QuickSort(ArrayList<String> list, int start, int end) {
+        // TODO
+        //make sure start is lower than end
+        if(start < end) {
+            int lowIndex = partition(list, start, end);
+            //make two recursions to separate the list
+            QuickSort(list, start, lowIndex);
+            QuickSort(list, lowIndex + 1, end);
         }
     }
 
     /**
-     * merge helper function for MergeSort
+     * partition helper function for QuickSort
      *
      * @param arr The arraylist we want to sort
      * @param l left-most index we want to merge
-     * @param m the middle index we want to merge
-     * @param r right-most index we want to merge
+     * @param h right-most index we want to merge
      */
-    private void merge(ArrayList<String> arr, int l, int m, int r) {
+    private int partition(ArrayList<String> arr, int l, int h) {
+        // TODO
+        int mid = l + (h-l)/2;
+        String pivot = arr.get(mid);
+        boolean finished = false;
+        while(!finished){
 
-        int mergedSize = r - l + 1;
+            while(arr.get(l).compareTo(pivot) < 0){
+                l += 1;
+            }
 
-        ArrayList<String> mergedNums = new ArrayList<>();
-        int left = l, right = m + 1;
-        //add whoever larger to the mergedNums
-        while (left <= m && right <= r) {
-            if (arr.get(left).compareTo(arr.get(right)) <= 0) {
-                mergedNums.add(arr.get(left));
-                left++;
+            while(arr.get(h).compareTo(pivot) > 0){
+                h -= 1;
             }
-            else {
-                mergedNums.add(arr.get(right));
-                right++;
+            if(l >= h){
+                finished = true;
+            }
+            if(l < h){
+                String temp = arr.get(l);
+                arr.set(l,arr.get(h));
+                arr.set(h,temp);
+                l+=1;
+                h-=1;
             }
         }
-        //what are left
-        while (left <= m) {
-            mergedNums.add(arr.get(left));
-            left++;
-        }
-        while (right <= r) {
-            mergedNums.add(arr.get(right));
-            right++;
-        }
-        for (int i = 0; i < mergedSize; i++) {
-            arr.set(l + i, mergedNums.get(i));
-        }
+        return h;
     }
+
 }
