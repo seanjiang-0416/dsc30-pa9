@@ -74,64 +74,12 @@ public class ContactList {
             phoneNumbers.addAll(this.contactList.get(name).getPhoneNumbers());
         }
         ArrayList<String> pbList = new ArrayList<String>(phoneNumbers);
-        //MergeSort(pbList,0,pbList.size()-1);
-        Modified_QuickSort(pbList,0,pbList.size()-1, pbList.size()/2);
+        QuickSort(pbList,0,pbList.size()-1);
         String[] output = new String[pbList.size()];
         pbList.toArray(output);
         return output;
     }
 
-    /**
-     * This method performs insertion sort on the input arraylist
-     *
-     * @param list The arraylist we want to sort
-     * @param start The initial index on subsection of Arraylist we want to sort
-     * @param end The final index of the subsection of Arraylist we want to sort
-     */
-    public void InsertionSort(ArrayList<String> list, int start, int end) {
-        // TODO
-        for(int i = start; i <= end; i++){
-            String compare = list.get(i);
-            for(int j = start; j <= i; j++){
-                //check if compare is less than j
-                if(compare.compareTo(list.get(j)) < 0){
-                    list.add(j, list.remove(i));
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
-     * This method performs a modified QuickSort that switches to insertion sort
-     * after a certain cutoff
-     *
-     * @param list The arraylist we want to sort
-     * @param start The inital index on subsection of Arraylist we want to sort
-     * @param end The final index of the subsection of Arraylist we want to sort
-     * @param cutoff the minimum length of a subsection of the arraylist
-     *               such that we switch to Insertion Sort
-     */
-    public void Modified_QuickSort(ArrayList<String> list, int start, int end, int cutoff) {
-        // TODO
-        if (start < end) {
-            int lowIndex = partition(list, start, end);
-            //divide into four scenarios: whether the lower partition list and upper
-            // partition list are larger or smaller than the cutoff
-            if (lowIndex + 1 - start <= cutoff) {
-                InsertionSort(list, start, lowIndex);
-            }
-            if (end - lowIndex - 1 <= cutoff) {
-                InsertionSort(list, lowIndex + 1, end);
-            }
-            if (lowIndex + 1 - start > cutoff) {
-                QuickSort(list, start, lowIndex);
-            }
-            if (end - lowIndex - 1 > cutoff) {
-                QuickSort(list, lowIndex + 1, end);
-            }
-        }
-    }
     /**
      * This method performs quick sort on the input arraylist
      *
