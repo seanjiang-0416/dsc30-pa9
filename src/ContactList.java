@@ -75,7 +75,7 @@ public class ContactList {
         }
         ArrayList<String> pbList = new ArrayList<String>(phoneNumbers);
         //MergeSort(pbList,0,pbList.size()-1);
-        QuickSort(pbList,0,pbList.size()-1);
+        Modified_QuickSort(pbList,0,pbList.size()-1, pbList.size()/2);
         String[] output = new String[pbList.size()];
         pbList.toArray(output);
         return output;
@@ -109,7 +109,7 @@ public class ContactList {
      * @param list The arraylist we want to sort
      * @param start The inital index on subsection of Arraylist we want to sort
      * @param end The final index of the subsection of Arraylist we want to sort
-     * @param cutoff the minimum length of an subsection of the arraylist
+     * @param cutoff the minimum length of a subsection of the arraylist
      *               such that we switch to Insertion Sort
      */
     public void Modified_QuickSort(ArrayList<String> list, int start, int end, int cutoff) {
